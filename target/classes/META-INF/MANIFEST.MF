@@ -1,5 +1,10 @@
 Manifest-Version: 1.0
 Built-By: vitor.c.nascimento
 Build-Jdk: 15.0.1
+Implementation-Title: BACKEND_TEST_LIFERAY
+Implementation-Version: 0.0.1-SNAPSHOT
+Implementation-Vendor-Id: com.liferay
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-boot
+ -starter-parent/sales
 Created-By: Maven Integration for Eclipse
 
