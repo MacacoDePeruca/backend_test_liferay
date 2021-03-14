@@ -32,3 +32,12 @@ __metodologia de teste__:
 ![image](https://user-images.githubusercontent.com/6961441/111087967-894f3e00-8503-11eb-8f04-f6aff14efc09.png)
 ![image](https://user-images.githubusercontent.com/6961441/111087984-a257ef00-8503-11eb-9786-26a3bfc0971b.png)
 ![image](https://user-images.githubusercontent.com/6961441/111088020-daf7c880-8503-11eb-9a79-8d712953e68a.png)
+
+__OUTPUTS__
+
+* __OutPut 1 :__
+  * ![image](https://user-images.githubusercontent.com/6961441/111088424-db915e80-8505-11eb-89af-39d78b6368e9.png)
+* __OutPut 2 :__
+  * ![image](https://user-images.githubusercontent.com/6961441/111088460-13000b00-8506-11eb-92dd-c774964195cc.png)
+* __OutPut 3 :__
+  * ![image](https://user-images.githubusercontent.com/6961441/111088495-3b880500-8506-11eb-8764-5d729a16cf57.png)
