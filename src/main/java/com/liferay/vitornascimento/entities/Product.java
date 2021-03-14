@@ -6,6 +6,8 @@ public class Product {
 	private String description;
 	private ProductCategory category;
 	private boolean imported;
+	private double shelfPrice;
+	private boolean taxed; 
 	
 
 	public Product( Product billedProduct) {
@@ -25,8 +27,26 @@ public class Product {
 	}
 	
 	
-	
-	
+	public double getShelfPrice() {
+		return shelfPrice;
+	}
+
+
+	public void setShelfPrice(double shelfPrice) {
+		this.shelfPrice = shelfPrice;
+	}
+
+
+	public boolean istaxed() {
+		return taxed;
+	}
+
+
+	public void settaxed(boolean taxed) {
+		this.taxed = taxed;
+	}
+
+
 	public boolean isImported() {
 		return imported;
 	}

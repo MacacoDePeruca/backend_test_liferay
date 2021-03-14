@@ -8,25 +8,30 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.liferay.vitornascimento.entities.AfterTaxes;
 import com.liferay.vitornascimento.entities.MockProducts;
 import com.liferay.vitornascimento.entities.Product;
-import com.liferay.vitornascimento.entities.ProductCorrector;
+import com.liferay.vitornascimento.entities.Taxes;
 import com.liferay.vitornascimento.service.Billing;
+import com.liferay.vitornascimento.service.CorrectRound;
 import com.liferay.vitornascimento.service.ValidatePrice;
 
 public class BillingTest {
 
 	MockProducts inputObject;
 	Billing billing;
-	List<ProductCorrector> validations = new ArrayList<>();;
+
+	List<Taxes> validations = new ArrayList<>();
+	List<AfterTaxes> afterAjusts = new ArrayList<>();
+	
 
 	@Before
 	public void setUp() {
 		inputObject = new MockProducts();
 		validations.add(new ValidatePrice());
-		
+		afterAjusts.add(new CorrectRound());
 
-		billing = new Billing(validations);
+		billing = new Billing(validations, afterAjusts);
 
 	}
 

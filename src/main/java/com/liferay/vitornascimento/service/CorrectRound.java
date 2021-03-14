@@ -3,13 +3,13 @@ package com.liferay.vitornascimento.service;
 import java.math.BigDecimal;
 import java.math.MathContext;
 
+import com.liferay.vitornascimento.entities.AfterTaxes;
 import com.liferay.vitornascimento.entities.Product;
-import com.liferay.vitornascimento.entities.ProductCorrector;
 
-public class CorrectRound implements ProductCorrector{
+public class CorrectRound implements AfterTaxes{
 
 	@Override
-	public void validate(Product product) {
+	public void roundByFive(Product product) {
 
        double price = product.getPrice();
 		
