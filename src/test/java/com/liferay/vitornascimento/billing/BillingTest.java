@@ -23,7 +23,6 @@ public class BillingTest {
 
 	List<Taxes> validations = new ArrayList<>();
 	List<AfterTaxes> afterAjusts = new ArrayList<>();
-	
 
 	@Before
 	public void setUp() {
@@ -77,39 +76,84 @@ public class BillingTest {
 		;
 
 	}
+
 	@Test
 	public void BuyingCommonImportedProductTest() {
-		
-		Product common = inputObject.mockImportedCommon(0);
-		
-		
-		assertEquals(common.getPrice() * 1.15, billing.invoice(common).getPrice(), 0.001); 
+
+		Product common = inputObject.mockImportedCommonPrice(0, 10.00);
+
+		assertEquals(11.55, billing.invoice(common).getPrice(), 0.001);
 		// non imported common itens have 15% tax ( 10 by category and 5 by importation)
 	}
-	
+
 	@Test
 	public void BuyingImportedBookTest() {
-		
-		Product common = inputObject.mockImportedBook(0);
-		
-		assertEquals(common.getPrice() * 1.05, billing.invoice(common).getPrice(), 0.001);
-		//  imported book have 5% tax ( 0 by category and 5 by importation)
+
+		Product common = inputObject.mockImportedBookWithPrice(0, 10.0);
+
+		assertEquals(10.50, billing.invoice(common).getPrice(), 0.001);
+		// imported book have 5% tax ( 0 by category and 5 by importation)
 	}
+
 	@Test
 	public void BuyingImportedDrugTest() {
-		
-		Product common = inputObject.mockImportedDrug(0);
-		
-		assertEquals(common.getPrice() * 1.05, billing.invoice(common).getPrice(),0.001); //  imported book have 5% tax ( 0 by category and 5 by importation)
+
+		Product common = inputObject.mockImportedDrugWithPrice(0, 10.00);
+
+		assertEquals(10.50, billing.invoice(common).getPrice(), 0.001); // imported book have 5% tax
+																		// ( 0 by category and 5 by
+																		// importation)
 	}
+
 	@Test
 	public void BuyingImportedFoodTest() {
-		
-		Product common = inputObject.mockImportedFood(0);
-		
-		assertEquals(common.getPrice() * 1.05, billing.invoice(common).getPrice(), 0.001); //  imported book have 5% tax ( 0 by category and 5 by importation)
+
+		Product common = inputObject.mockImportedFoodwithPrice(0, 15.60);
+
+		assertEquals(16.40, billing.invoice(common).getPrice(), 0.001); // imported book have 5% tax
+																		// ( 0 by category and 5 by
+																		// importation)
+																		// + 2 cents round
 	}
-	
-	
+
+	@Test
+	public void inputOneTest() {
+
+		Product book = inputObject.mockBookWithPrice(1, 12.49);
+		Product musicCD = inputObject.mockCommonPrice(1, 14.99);
+		Product chocolatBar = inputObject.mockFoodwithPrice(1, 0.85);
+
+		assertEquals(12.49, billing.invoice(book).getPrice(), 0.001);
+		assertEquals(16.49, billing.invoice(musicCD).getPrice(), 0.001);
+		assertEquals(0.85, billing.invoice(chocolatBar).getPrice(), 0.001);
+
+	}
+
+	@Test
+	public void inputTwoTest() {
+
+		Product importedPerfume = inputObject.mockImportedCommonPrice(1, 47.50);
+
+		Product importedBoxOfChocolatBar = inputObject.mockImportedFoodwithPrice(1, 10.00);
+
+		assertEquals(54.65, billing.invoice(importedPerfume).getPrice(), 0.01); 
+		assertEquals(10.50, billing.invoice(importedBoxOfChocolatBar).getPrice(), 0.001);
+
+	}
+
+	@Test
+	public void inputThreeTest() {
+
+		Product importedPerfume = inputObject.mockImportedCommonPrice(1, 27.99);
+		Product perfume = inputObject.mockCommonPrice(1, 18.99);
+		Product pills = inputObject.mockDrugWithPrice(1, 9.75);
+		Product importedBoxOfChocolatBar = inputObject.mockImportedFoodwithPrice(1, 11.25);
+
+		assertEquals(32.19, billing.invoice(importedPerfume).getPrice(), 0.01);
+		assertEquals(20.89, billing.invoice(perfume).getPrice(), 0.01);
+		assertEquals(9.75, billing.invoice(pills).getPrice(), 0.01);
+		assertEquals(11.85, billing.invoice(importedBoxOfChocolatBar).getPrice(), 0.01);
+
+	}
 
 }

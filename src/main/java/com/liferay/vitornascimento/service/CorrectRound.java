@@ -17,20 +17,26 @@ public class CorrectRound implements AfterTaxes{
 		
 		int cents = big.intValue();
 		
-		if( cents <= 2 && cents !=0 ) {
-			
-			price = price*100 - cents;
-			price = price/100;
-			product.setPrice(price);
-			
-		}else {
-			int faltaPraCinco = 5 - cents;
-			
-			price = price * 100 + faltaPraCinco;
-			price = price/100;
-			product.setPrice(price);
-			
-		}
+		int forFive = 5 - cents;
+		
+		price = price * 100 + forFive;
+		price = price/100;
+		product.setPrice(price);
+		
+//		if( cents <= 2 && cents !=0 ) {
+//			
+//			price = price*100 - cents;
+//			price = price/100;
+//			product.setPrice(price);
+//			
+//		}else {
+//			int forFive = 5 - cents;
+//			
+//			price = price * 100 + forFive;
+//			price = price/100;
+//			product.setPrice(price);
+//			
+//		}
 			
 	
 		

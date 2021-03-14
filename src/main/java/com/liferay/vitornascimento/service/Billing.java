@@ -24,7 +24,7 @@ public class Billing {
 
 		});
 
-		if (product.istaxed())
+		if (product.istaxed() && product.isImported())
 			afterTaxes.forEach(t -> t.roundByFive(product));
 
 		return new Product(product);
