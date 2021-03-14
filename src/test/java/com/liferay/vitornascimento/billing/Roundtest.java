@@ -36,7 +36,7 @@ public class Roundtest {
 	@Test
 	public void roundToFiveCentsTest() {
 
-		Product common = inputObject.mockCommonPrice(0, 10.44);
+		Product common = inputObject.mockImportedCommonPrice(0, 9.99);
 
 		assertEquals(11.50, billing.invoice(common).getPrice(), 0.01);
 

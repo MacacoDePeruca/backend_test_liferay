@@ -39,7 +39,7 @@ public class BillingTest {
 
 		Product food = inputObject.mockFood(0);
 
-		assertEquals(Double.compare(billing.invoice(food).getPrice(), food.getPrice()), 0); // non imported food have no
+		assertEquals(billing.invoice(food).getPrice(), food.getPrice(), 0.01); // non imported food have no
 																							// taxes
 	}
 
@@ -48,7 +48,7 @@ public class BillingTest {
 
 		Product drug = inputObject.mockDrug(0);
 
-		assertEquals(Double.compare(billing.invoice(drug).getPrice(), drug.getPrice()), 0); // non imported drugs have
+		assertEquals(billing.invoice(drug).getPrice(), drug.getPrice(), 0.01); // non imported drugs have
 																							// no taxes
 
 	}
@@ -58,7 +58,7 @@ public class BillingTest {
 
 		Product book = inputObject.mockBook(0);
 
-		assertEquals(Double.compare(billing.invoice(book).getPrice(), book.getPrice()), 0); // non imported books have
+		assertEquals(billing.invoice(book).getPrice(), book.getPrice(), 0.01); // non imported books have
 																							// no taxes
 
 		;
@@ -70,7 +70,7 @@ public class BillingTest {
 
 		Product common = inputObject.mockCommon(0);
 
-		assertEquals(common.getPrice() * 1.10, billing.invoice(common).getPrice(), 0); // non imported common itens have
+		assertEquals(common.getPrice() * 1.10, billing.invoice(common).getPrice(), 0.01); // non imported common itens have
 																						// 10% tax
 
 		;
@@ -149,7 +149,7 @@ public class BillingTest {
 		Product pills = inputObject.mockDrugWithPrice(1, 9.75);
 		Product importedBoxOfChocolatBar = inputObject.mockImportedFoodwithPrice(1, 11.25);
 
-		assertEquals(32.19, billing.invoice(importedPerfume).getPrice(), 0.01);
+		assertEquals(32.20, billing.invoice(importedPerfume).getPrice(), 0.01);
 		assertEquals(20.89, billing.invoice(perfume).getPrice(), 0.01);
 		assertEquals(9.75, billing.invoice(pills).getPrice(), 0.01);
 		assertEquals(11.85, billing.invoice(importedBoxOfChocolatBar).getPrice(), 0.01);

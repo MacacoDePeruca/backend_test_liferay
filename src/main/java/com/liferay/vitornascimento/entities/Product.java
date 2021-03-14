@@ -1,5 +1,8 @@
 package com.liferay.vitornascimento.entities;
 
+import java.math.BigDecimal;
+import java.math.MathContext;
+
 public class Product {
 
 	private double price;
@@ -12,9 +15,15 @@ public class Product {
 
 	public Product( Product billedProduct) {
 		
-		this.price = billedProduct.getPrice();
-		this.description = billedProduct.getDescription();
-		this.category = billedProduct.getCategory();
+		this.price = new BigDecimal(billedProduct.price)
+				.round(new MathContext(4)).doubleValue();
+		
+		this.description = billedProduct.description;
+		this.category = billedProduct.category;
+		this.imported = billedProduct.imported;
+		this.shelfPrice = new BigDecimal(billedProduct.shelfPrice)
+				.round(new MathContext(4)).doubleValue();
+		this.taxed = billedProduct.taxed;
 		
 	}
 	
