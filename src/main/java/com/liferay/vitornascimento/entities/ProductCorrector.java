@@ -1,6 +1,6 @@
 package com.liferay.vitornascimento.entities;
 
-public interface ProductValidator {
+public interface ProductCorrector {
 
 	void validate(Product product);
 }
